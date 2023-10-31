@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-main>
-      <router-view />
+      <div class="background-image">
+            <router-view />
+      </div>
     </v-main>
   </v-app>
 </template>
@@ -15,3 +17,14 @@ export default {
   }),
 };
 </script>
+
+<style>
+.background-image {
+  background-image: url('@/assets/background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
