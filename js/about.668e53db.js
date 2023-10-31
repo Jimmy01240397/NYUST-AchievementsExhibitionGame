@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunknyust_achievements_exhibition_game"]=self["webpackChunknyust_achievements_exhibition_game"]||[]).push([[443],{6589:function(e,n,t){t.r(n),t.d(n,{default:function(){return _}});var i=t(3396);const a={class:"about"},s=(0,i._)("h1",null,"This is an about page",-1),u=[s];function c(e,n){return(0,i.wg)(),(0,i.iD)("div",a,u)}var r=t(89);const h={},o=(0,r.Z)(h,[["render",c]]);var _=o}}]);
-//# sourceMappingURL=about.668e53db.js.map
