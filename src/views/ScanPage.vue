@@ -41,7 +41,10 @@ export default {
   border: none;
 }
 .scanner {
-  mask: url('@/assets/mask.png');
+  -webkit-mask: url('@/assets/mask.png') no-repeat center center;;
+  mask: url('@/assets/mask.png') no-repeat center center;;
+  -webkit-mask-size: contain;
+  mask-size: contain;
   padding: 0;
   border: none;
 }
