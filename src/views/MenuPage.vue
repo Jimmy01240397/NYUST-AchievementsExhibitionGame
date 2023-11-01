@@ -45,7 +45,8 @@ export default {
     },
   },
   methods: {
-    scan: () => {
+    scan: function() {
+      this.$router.push('/scan');
     }
   },
   beforeMount() {

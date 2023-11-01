@@ -14,7 +14,7 @@ export default {
   }),
   methods: {
     start: function() {
-      this.$router.push('/menu');
+      this.$router.replace('/menu');
     }
   }
 };

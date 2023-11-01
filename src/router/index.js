@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import MenuPage from "../views/MenuPage.vue";
+import ScanPage from "../views/ScanPage.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/menu",
     name: "menu",
     component: MenuPage,
+  },
+  {
+    path: "/scan",
+    name: "scan",
+    component: ScanPage,
   },
 ];
 
