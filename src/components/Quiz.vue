@@ -49,4 +49,11 @@ export default {
 .v-selection-control .v-label {
   opacity: 100;
 }
+.v-radio {
+  font-size: 3vw;
+}
+.v-selection-control__wrapper{
+  width: 10vw;
+  aspect-ratio: 1/1;
+}
 </style>
