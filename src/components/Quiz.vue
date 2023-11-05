@@ -43,7 +43,7 @@ export default {
 </script>
 <style>
 .quiztext {
-  font-size: 24px;
+  font-size: 6.1vw;
   color: #ffffff;
 }
 .v-selection-control .v-label {
