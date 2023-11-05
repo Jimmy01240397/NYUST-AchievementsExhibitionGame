@@ -18,7 +18,7 @@
             :key="k"
             :align="k == 1 ? 'left' : 'right'"
           >
-            <v-img width="11.2vh" aspect-ratio="1/1" cover :src="(k-1)*5+i-1 < score ? passimg : nopassimg"></v-img>
+            <v-img width="9vh" aspect-ratio="1/1" cover :src="(k-1)*5+i-1 < score ? passimg : nopassimg"></v-img>
           </v-col>
         </v-row>
       </v-container>
