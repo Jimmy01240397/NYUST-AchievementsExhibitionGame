@@ -83,12 +83,12 @@ export default {
   position: absolute;
   top: 27.7%;
   left: 17%;
-  bottom: 12.34%;
+  bottom: 19.8%;
   right: 17%;
 }
 .summitbutton {
   position: absolute;
-  bottom: 7.52%;
+  bottom: 15%;
   background-color: transparent;
   padding: 0;
   border: none;
