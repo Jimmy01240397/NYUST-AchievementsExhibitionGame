@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     scan: function() {
-      this.$router.push('/scan');
+      if(this.score < 10) this.$router.push('/scan');
     },
     summit: function() {
       this.score = -1;
@@ -83,7 +83,14 @@ export default {
   position: absolute;
   top: 27.7%;
   left: 17%;
-  bottom: 6.7%;
+  bottom: 12.34%;
   right: 17%;
+}
+.summitbutton {
+  position: absolute;
+  bottom: 7.52%;
+  background-color: transparent;
+  padding: 0;
+  border: none;
 }
 </style>
