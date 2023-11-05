@@ -15,6 +15,9 @@ export default {
   data: () => ({
     //
   }),
+  beforeMount: async function() {
+    document.title = '2023 研發成果展'
+  }
 };
 </script>
 

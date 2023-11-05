@@ -6,50 +6,62 @@
         </v-img>
     </v-btn>
     <div class="checkcontainer">
-    <v-container class="pa-0 fill-height">
-      <v-row 
-        no-gutters
-        v-for="i in 5"
-        :key="i"
-        class="grow"
-      >
-        <v-col
-          v-for="k in 2"
-          :key="k"
-          :align="k == 1 ? 'left' : 'right'"
+      <v-container class="pa-0 fill-height">
+        <v-row 
+          no-gutters
+          v-for="i in 5"
+          :key="i"
+          class="grow"
         >
-          <v-img width="24vw" aspect-ratio="1/1" cover :src="(k-1)*5+i-1 < score ? passimg : nopassimg"></v-img>
-        </v-col>
-      </v-row>
-    </v-container>
+          <v-col
+            v-for="k in 2"
+            :key="k"
+            :align="k == 1 ? 'left' : 'right'"
+          >
+            <v-img width="11.2vh" aspect-ratio="1/1" cover :src="(k-1)*5+i-1 < score ? passimg : nopassimg"></v-img>
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
+    <v-btn class="summitbutton" v-show="summitshow" rounded flat density=disable @click="summit">
+        <v-img width="18.4vw" aspect-ratio="129/50" cover src="@/assets/summit.svg"></v-img>
+    </v-btn>
   </div>
 </template>
 
 <script>
-import numberhash from '@/plugins/numberhash';
+import readscore from '@/plugins/readscore';
+import readquiz from '@/plugins/readquiz';
 export default {
   name: "MenuPage",
   data: () => ({
     nopassimg: require("@/assets/score.svg"),
     passimg: require("@/assets/scorecheck.svg"),
+    summitshow: false,
   }),
   computed: {
-    score: function() {
-      let score = this.$cookies.get("score");
-      if(this.$cookies.get("score") == null) {
-        score = numberhash.numbertohash(0);
-        this.$cookies.set("score", score);
-      }
-      return numberhash.hashtonumber(score);
+    score: {
+      get: function() {
+        return readscore.getscore();
+      },
+      set: function(value) {
+        readscore.setscore(value);
+      },
     },
   },
   methods: {
     scan: function() {
       this.$router.push('/scan');
+    },
+    summit: function() {
+      this.score = -1;
+      this.$router.replace('/end');
     }
   },
-  beforeMount() {
+  beforeMount: async function() {
+    if(await readquiz.contain()) this.$router.replace('/quiz');
+    if(this.score == -1) this.$router.replace('/end');
+    if(this.score >= 10) this.summitshow = true;
   }
 };
 </script>

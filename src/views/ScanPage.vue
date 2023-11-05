@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import readquiz from '@/plugins/readquiz';
+import readscore from '@/plugins/readscore';
 import { QrStream } from 'vue3-qr-reader';
 export default {
   name: "ScanPage",
@@ -18,10 +20,17 @@ export default {
   computed: {
   },
   methods: {
-    scan: function() {
+    scan: async function(data) {
+      readquiz.setquiz(data);
+      if(await readquiz.contain()) 
+      {
+        this.$router.push('/quiz');
+      }
     }
   },
-  beforeMount() {
+  beforeMount: async function() {
+    if(await readquiz.contain()) this.$router.replace('/quiz');
+    if(readscore.getscore() == -1) this.$router.replace('/end');
   }
 };
 </script>

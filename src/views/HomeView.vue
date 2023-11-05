@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import readquiz from '@/plugins/readquiz';
+import readscore from '@/plugins/readscore';
 export default {
   name: "HomeView",
   data: () => ({
@@ -16,6 +18,10 @@ export default {
     start: function() {
       this.$router.replace('/menu');
     }
+  },
+  beforeMount: async function() {
+    if(await readquiz.contain()) this.$router.replace('/quiz');
+    if(readscore.getscore() == -1) this.$router.replace('/end');
   }
 };
 </script>
