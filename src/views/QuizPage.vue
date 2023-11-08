@@ -1,5 +1,10 @@
 <template>
   <div class="quizcontainer">
+    <div style="width: 100vw;">
+      <v-img class="showid" width="12.5vw" aspect-ratio="1/1" cover src="@/assets/showid.svg">
+          <strong>{{ quizzes != null && quizzes.length > 0 ? quizzes[0].id : '' }}</strong>
+      </v-img>
+    </div>
     <div class="quizlist">
       <Quiz 
         v-for="(q, i) in quizzes"
@@ -93,6 +98,13 @@ export default {
   height: 100vh;
   display: flex;
   justify-content: center;
+}
+.showid {
+  top: 1.76vh;
+  left: 3.8vw;
+  text-align: center;
+  line-height: 11vw;
+  font-size: 3vw;
 }
 .quizlist {
   position: absolute;
