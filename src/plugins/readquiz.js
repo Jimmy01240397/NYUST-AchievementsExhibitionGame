@@ -17,8 +17,10 @@ async function read() {
         const data = await fetch('/quiz.json').then((response) => response.json());
         data.forEach((item) => {
             const hash = SHA1(item.id + '\n').toString(CryptoJS.enc.Base64)
-            if(!(hash in quizzes)) quizzes[hash] = [];
-            quizzes[hash].push(item);
+            if(item.ans >= 0) {
+                if(!(hash in quizzes)) quizzes[hash] = [];
+                quizzes[hash].push(item);
+            }
         });
     }
     return quizzes;
