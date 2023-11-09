@@ -63,15 +63,15 @@ export default {
           break;
         }
       }
-      readquiz.addcomplate();
-      readquiz.clearquiz();
       if(currect) {
         this.score++;
+        readquiz.addcomplate();
         alert('答對了');
       }
       else {
         alert('答錯了');
       }
+      readquiz.clearquiz();
       this.$router.replace('/menu');
     },
   },

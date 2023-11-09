@@ -49,7 +49,7 @@ function complatelist() {
 
 function addcomplate() {
     const list = complatelist();
-    //list.push(getvue().$cookies.get("quiz"));
+    list.push(getvue().$cookies.get("quiz"));
     getvue().$cookies.set("complate", window.btoa(JSON.stringify(list)));
 }
 
