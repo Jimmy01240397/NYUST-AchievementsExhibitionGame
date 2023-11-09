@@ -43,18 +43,36 @@ async function contain() {
 }
 
 function complatelist() {
-    if(getvue().$cookies.get("complate") == undefined) return [];
+    const now = new Date();
+    const id = SHA1(`${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}`).toString()
+    try {
+        if(getvue().$cookies.get("complate") == undefined || JSON.parse(window.atob(getvue().$cookies.get("complate"))).id != id) {
+            return {
+                id,
+                data: [],
+            };
+        }
+    } catch(e) {
+        return {
+            id,
+            data: [],
+        };
+    }
     return JSON.parse(window.atob(getvue().$cookies.get("complate")));
 }
 
 function addcomplate() {
     const list = complatelist();
-    list.push(getvue().$cookies.get("quiz"));
+    list.data.push(getvue().$cookies.get("quiz"));
     getvue().$cookies.set("complate", window.btoa(JSON.stringify(list)));
 }
 
+function clearcomplate() {
+    getvue().$cookies.remove("complate");
+}
+
 function checkcomplate() {
-    return complatelist().includes(getvue().$cookies.get("quiz"));
+    return complatelist().data.includes(getvue().$cookies.get("quiz"));
 }
 
 
@@ -64,5 +82,6 @@ export default {
     clearquiz,
     contain,
     addcomplate,
+    clearcomplate,
     checkcomplate,
 }

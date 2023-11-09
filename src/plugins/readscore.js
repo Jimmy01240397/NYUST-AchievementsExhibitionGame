@@ -20,10 +20,15 @@ function getscore(max=11) {
 
 function setscore(num) {
     const now = new Date();
-    return getvue().$cookies.set("score", SHA1(`${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}/${num}`).toString());
+    getvue().$cookies.set("score", SHA1(`${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}/${num}`).toString());
+}
+
+function clearscore() {
+    getvue().$cookies.remove("score");
 }
 
 export default {
     getscore,
     setscore,
+    clearscore,
 }
