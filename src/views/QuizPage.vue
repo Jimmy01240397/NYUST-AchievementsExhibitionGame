@@ -6,14 +6,19 @@
       </v-img>
     </div>
     <div class="quizlist">
-      <Quiz 
-        v-for="(q, i) in quizzes"
-        :key="i"
-        :data="q"
-        v-model="chooses[i]"
-        @choose="onchoose"
-      >
-      </Quiz>
+      <v-virtual-scroll
+        :items="quizzes != null ? quizzes : []"
+        height="100%">
+        <template v-slot:default="{ item, index }">
+          <Quiz 
+            :key="index"
+            :data="item"
+            v-model="chooses[index]"
+            @choose="onchoose"
+          >
+        </Quiz>
+        </template>
+      </v-virtual-scroll>
     </div>
     <v-btn class="summitbutton" v-show="summitshow" rounded flat density=disable @click="summit">
         <v-img width="18.4vw" aspect-ratio="129/50" cover src="@/assets/summit.svg"></v-img>
