@@ -1,9 +1,9 @@
 <template>
   <div>
-    <strong class="quiztext">{{ data.quiz }}</strong>
+    <strong class="quiztext">{{ quizdata.quiz }}</strong>
     <v-radio-group v-model="result">
       <v-radio 
-        v-for="(choose, i) in data.choose" 
+        v-for="(choose, i) in quizdata.choose" 
         :key="i"
         :value="i.toString()">
         <template v-slot:label>
@@ -18,7 +18,7 @@
 export default {
   name: "QuizOps",
   props: {
-    data: Object,
+    quizdata: Object,
   },
   data: () => ({
     modelValue: null

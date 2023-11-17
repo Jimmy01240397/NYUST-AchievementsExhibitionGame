@@ -6,19 +6,14 @@
       </v-img>
     </div>
     <div class="quizlist">
-      <v-virtual-scroll
-        :items="quizzes != null ? quizzes : []"
-        height="100%">
-        <template v-slot:default="{ item, index }">
-          <Quiz 
-            :key="index"
-            :data="item"
-            v-model="chooses[index]"
-            @choose="onchoose"
-          >
-        </Quiz>
-        </template>
-      </v-virtual-scroll>
+      <Quiz 
+        v-for="(q, i) in (quizzes != null ? quizzes : [])"
+        :key="i"
+        :quizdata="q"
+        v-model="chooses[i]"
+        @choose="onchoose"
+      >
+      </Quiz>
     </div>
     <v-btn class="summitbutton" v-show="summitshow" rounded flat density=disable @click="summit">
         <v-img width="18.4vw" aspect-ratio="129/50" cover src="@/assets/summit.svg"></v-img>
@@ -113,6 +108,7 @@ export default {
 }
 .quizlist {
   position: absolute;
+  overflow-y: scroll;
   top: 13.6%;
   left: 8%;
   bottom: 19.8%;
